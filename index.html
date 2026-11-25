@@ -166,6 +166,12 @@ footer a{color:var(--verde);text-decoration:underline}
 @media(max-width:640px){.depo-card-mini{width:78vw}}
 .btn-cta.verde,.btn-sim,.btn-sim-final{color:#fff!important}
 .nicho-badge,.plano-badge,.check-icon,.item-check,.p-check,.v-check,.passo-numero{color:#fff}
+
+/* ---------- whatsapp float ---------- */
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9000;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35);opacity:0;transform:translateY(16px) scale(.9);pointer-events:none;transition:opacity .35s ease,transform .35s ease}
+.wa-float.wa-show{opacity:1;transform:none;pointer-events:auto}
+.wa-float:hover{filter:brightness(1.07)}
+@media(max-width:540px){.wa-float{right:14px;bottom:14px;width:52px;height:52px}}
 </style>
 </head>
 <script>
@@ -499,5 +505,27 @@ function toggleFaq(btn){const item=btn.closest('.faq-item');const aberto=item.cl
 })();
 </script>
 <!-- EXIT-POPUP:END -->
+
+<!-- WHATSAPP-FLOAT:START -->
+<a id="wa-float" class="wa-float" href="https://wa.me/5535991770545?text=Ol%C3%A1!%20Vim%20do%20site%20de%20Objetos%20Falantes%20para%20Despachantes%20Documentais%20e%20quero%20saber%20mais%20sobre%20o%20Pacote%20Completo." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" width="30" height="30" fill="#fff"><path d="M16.001 3C9.374 3 4 8.373 4 15c0 2.252.615 4.36 1.687 6.172L4 29l8.03-1.653A11.94 11.94 0 0 0 16.001 27C22.627 27 28 21.627 28 15S22.627 3 16.001 3Zm.001 21.818c-1.92 0-3.75-.52-5.33-1.47l-.382-.226-4.766.981.993-4.66-.247-.391A9.76 9.76 0 0 1 6.2 15c0-5.413 4.388-9.818 9.801-9.818 5.412 0 9.8 4.405 9.8 9.818 0 5.413-4.388 9.818-9.8 9.818Zm5.361-7.347c-.293-.147-1.735-.857-2.004-.955-.269-.098-.465-.147-.661.147-.196.293-.758.955-.93 1.151-.171.196-.343.22-.636.073-.293-.147-1.237-.456-2.357-1.455-.871-.777-1.459-1.737-1.63-2.03-.171-.293-.018-.451.129-.597.133-.132.293-.343.44-.514.147-.171.196-.293.294-.49.098-.196.049-.367-.024-.514-.073-.147-.661-1.594-.906-2.183-.238-.572-.48-.494-.661-.503l-.563-.01c-.196 0-.514.073-.783.367-.269.293-1.027 1.004-1.027 2.45 0 1.445 1.052 2.841 1.198 3.038.147.196 2.07 3.159 5.016 4.43.701.303 1.248.484 1.675.619.704.224 1.344.192 1.85.117.564-.084 1.735-.709 1.98-1.393.245-.685.245-1.272.171-1.393-.073-.122-.269-.196-.563-.343Z"/></svg>
+</a>
+<script>
+(function(){
+  var wa = document.getElementById('wa-float');
+  var planos = document.getElementById('planos');
+  if(!wa || !planos) return;
+  function checkWa(){
+    var r = planos.getBoundingClientRect();
+    if(r.bottom < 0){
+      wa.classList.add('wa-show');
+      window.removeEventListener('scroll', checkWa);
+    }
+  }
+  window.addEventListener('scroll', checkWa, {passive:true});
+  checkWa();
+})();
+</script>
+<!-- WHATSAPP-FLOAT:END -->
 </body>
 </html>
